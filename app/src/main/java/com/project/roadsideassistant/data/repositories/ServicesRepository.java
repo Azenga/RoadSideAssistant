@@ -2,9 +2,11 @@ package com.project.roadsideassistant.data.repositories;
 
 import android.util.Log;
 
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.project.roadsideassistant.data.models.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServicesRepository {
@@ -33,7 +35,13 @@ public class ServicesRepository {
                                 return;
                             }
 
-                            taskListener.showServices(queryDocumentSnapshots.toObjects(Service.class));
+                            List<Service> services = new ArrayList<>();
+
+                            for (DocumentChange documentChange : queryDocumentSnapshots.getDocumentChanges()) {
+                                services.add(documentChange.getDocument().toObject(Service.class));
+                            }
+
+                            taskListener.showServices(services);
                         }
                 );
     }
