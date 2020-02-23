@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:orderInCategory="100"
+        android:title="@string/home_text" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_account_circle"
+        android:orderInCategory="101"
+        android:title="@string/profile_text" />
+    <item
+        android:id="@+id/servicesFragment"
+        android:icon="@drawable/ic_list"
+        android:orderInCategory="102"
+        android:title="@string/services_text" />
+    <item
+        android:id="@+id/productsFragment"
+        android:icon="@drawable/ic_list"
+        android:orderInCategory="103"
+        android:title="@string/products_text" />
+    <item
+        android:id="@+id/postsFragment"
+        android:icon="@drawable/ic_chat_bubble"
+        android:orderInCategory="104"
+        android:title="@string/blog_text" />
+    <item
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_info"
+        android:orderInCategory="105"
+        android:title="@string/about_us_text" />
+</menu>

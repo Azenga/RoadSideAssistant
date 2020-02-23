@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Road Ass</string>
+    <string name="login_text">Login</string>
+    <string name="register_text">Register</string>
+    <string name="signup_prompt">Don\'t have an account yet?</string>
+    <string name="login_prompt">Already have an account login?</string>
+    <string name="email_text">Email</string>
+    <string name="password_text">Password</string>
+    <string name="welcome_text">Welcome Home</string>
+    <string name="logout_text">logout</string>
+    <string name="home_text">Home</string>
+    <string name="profile_text">Profile</string>
+    <string name="user_avatar_text">User Avatar</string>
+    <string name="services_text">Services</string>
+    <string name="products_text">Products</string>
+    <string name="blog_text">Blog</string>
+    <string name="about_us_text">About Us</string>
+    <string name="get_started_text">Get Help</string>
+    <string name="car_model_question">What is the make and model of your car?</string>
+    <string name="select_car_model_hint">Select Car Model...</string>
+    <string name="next_text">Next</string>
+    <string name="add_phone_text">Add Phone Number</string>
+
+    <string-array name="car_models">
+        <item>ASTON MARTIN DB7</item>
+        <item>ASTON MARTIN DB9</item>
+        <item>ASTON MARTIN DBS</item>
+        <item>ASTON MARTIN RAPIDE</item>
+        <item>ASTON MARTIN V8 VANTAGE</item>
+        <item>FORD LASER</item>
+        <item>HONDA DASH</item>
+        <item>MAZDA ASTINA</item>
+        <item>MERCEDES-BENZ A CLASS W168</item>
+        <item>MERCEDES-BENZ A CLASS W169</item>
+        <item>MERCEDES-BENZ A CLASS W176</item>
+        <item>MERCEDES-BENZ C CLASS W205</item>
+        <item>MERCEDES-BENZ R CLASS</item>
+        <item>MITSUBISHI ASX</item>
+        <item>Modenas CT115S</item>
+        <item>Modenas KRISS</item>
+        <item>SUZUKI Kishazi</item>
+        <item>TOYOTA MASTERACE SURF</item>
+        <item>TOYOTA COROLLA</item>
+        <item>VOLKSWAGEN PASSAT</item>
+        <item>VOLKSWAGEN PASSAT CC</item>
+        <item>ROLLS ROYCE SPIRIT</item>
+        <item>ROLLS ROYCE SPUR</item>
+        <item>Nissan</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="display_name_hint">Dsiplay Name Loading...</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="not_verified_text">Not Verified</string>
+    <string name="setup_account_text">Setup Account</string>
+    <string name="display_name">Display Name</string>
+    <string name="update_account">Update Account</string>
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_carModelFragment"
+            app:destination="@id/carModelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_setupAccountFragment"
+            app:destination="@id/setupAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.about.AboutFragment"
+        android:label="About Us"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.services.ServicesFragment"
+        android:label="Services"
+        tools:layout="@layout/services_fragment" />
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.blog.PostsFragment"
+        android:label="Blog"
+        tools:layout="@layout/posts_fragment" />
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.products.ProductsFragment"
+        android:label="Products"
+        tools:layout="@layout/products_fragment" />
+    <fragment
+        android:id="@+id/chooseServiceFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.gethelp.service.ChooseServiceFragment"
+        android:label="Choose Service"
+        tools:layout="@layout/fragment_choose">
+        <action
+            android:id="@+id/action_chooseServiceFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carModelFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.gethelp.CarModelFragment"
+        android:label="Select Car Model"
+        tools:layout="@layout/fragment_car_model">
+        <action
+            android:id="@+id/action_carModelFragment_to_chooseServiceFragment"
+            app:destination="@id/chooseServiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.gethelp.LocationFragment"
+        android:label="Pinpoint Location"
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_locationFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.gethelp.InfoFragment"
+        android:label="Your Information"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/setupAccountFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.profile.SetupAccountFragment"
+        android:label="Setup Account"
+        tools:layout="@layout/setup_account_fragment" />
+</navigation>
