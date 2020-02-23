@@ -20,6 +20,8 @@ public class ProductsFragment extends Fragment {
     private RecyclerView productsRecyclerView;
 
     private ProductsAdapter productsAdapter;
+    
+    ProductsViewModel productsViewModel = new ViewModelProvider(getActivity()).get(ProductsViewModel.class);
 
     public ProductsFragment() {
         // Required empty public constructor
@@ -36,24 +38,22 @@ public class ProductsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        
+           productsViewModel.getProducts().observe(getViewLifecycleOwner(), products -> {
+               Log.d("Get Products", products);
+               showItems(products); 
+        });
 
+    }
+    
+    private void showItems(ArrayList<Products> products){
         //Register and setup the recycler view
         productsRecyclerView = view.findViewById(R.id.products_recycler_view);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         productsRecyclerView.setHasFixedSize(true);
-
+        
+        productsAdapter = new ProductsAdapter(products);
+        productsRecyclerView.setAdapter(productsAdapter);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        ProductsViewModel productsViewModel = new ViewModelProvider(getActivity()).get(ProductsViewModel.class);
-
-        productsViewModel.getProducts().observe(getViewLifecycleOwner(), products -> {
-            productsAdapter = new ProductsAdapter(products);
-            productsRecyclerView.setAdapter(productsAdapter);
-        });
-
-    }
 }
