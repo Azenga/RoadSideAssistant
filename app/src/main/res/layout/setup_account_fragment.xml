@@ -10,10 +10,12 @@
 
     <ProgressBar
         android:id="@+id/update_progress_bar"
-        android:visibility="invisible"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="288dp"
+        android:layout_height="4dp"
+        android:backgroundTint="@android:color/white"
+        android:progress="20"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +37,7 @@
         android:id="@+id/display_name_layout"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:hint="@string/display_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +53,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/update_account_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

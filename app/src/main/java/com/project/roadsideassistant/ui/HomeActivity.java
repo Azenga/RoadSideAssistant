@@ -20,6 +20,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -85,11 +86,6 @@ public class HomeActivity extends AppCompatActivity {
         userAvatarCIV = headerLayout.findViewById(R.id.avatar_civ);
         emailTV = headerLayout.findViewById(R.id.email_tv);
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
     }
 
     @Override
@@ -175,5 +171,11 @@ public class HomeActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser currentUser) {
 
         emailTV.setText(currentUser.getEmail());
+
+        Glide.with(this)
+                .load(currentUser.getPhotoUrl())
+                .centerCrop()
+                .placeholder(R.drawable.ic_account_circle_white)
+                .into(userAvatarCIV);
     }
 }

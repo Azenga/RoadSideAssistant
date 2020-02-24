@@ -20,6 +20,7 @@
     <string name="select_car_model_hint">Select Car Model...</string>
     <string name="next_text">Next</string>
     <string name="add_phone_text">Add Phone Number</string>
+    <string name="permission_rejected">Permission not granted</string>
 
     <string-array name="car_models">
         <item>ASTON MARTIN DB7</item>
@@ -56,4 +57,9 @@
     <string name="setup_account_text">Setup Account</string>
     <string name="display_name">Display Name</string>
     <string name="update_account">Update Account</string>
+    <string name="material_search_hint">Search For Place...</string>
+    <string name="application_logo">Application Logo</string>
+    <string name="request_permission">Request Permission</string>
+    <string name="request_permission_explanation">This Application needs permission to access device location to provide required services, Please Allow the permission</string>
+    <string name="grant_permission_text">Grant Permission</string>
 </resources>

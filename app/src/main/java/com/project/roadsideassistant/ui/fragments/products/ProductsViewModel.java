@@ -1,5 +1,7 @@
 package com.project.roadsideassistant.ui.fragments.products;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,6 +12,8 @@ import com.project.roadsideassistant.data.repositories.ProductsRepository;
 import java.util.List;
 
 public class ProductsViewModel extends ViewModel implements ProductsRepository.ProductTaskListener {
+
+    private static final String TAG = "ProductsViewModel";
 
     private ProductsRepository productsRepository;
 
@@ -27,6 +31,7 @@ public class ProductsViewModel extends ViewModel implements ProductsRepository.P
 
     @Override
     public void showProducts(List<Product> products) {
+        Log.d(TAG, "showProducts: products size" + products.size());
         _products.setValue(products);
     }
 

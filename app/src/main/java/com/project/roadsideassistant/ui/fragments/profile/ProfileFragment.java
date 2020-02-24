@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,6 +59,13 @@ public class ProfileFragment extends Fragment {
         setupAccountButton.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_setupAccountFragment);
         });
+
+        //Load the image to the image view
+        Glide.with(this)
+                .load(currentUser.getPhotoUrl())
+                .centerCrop()
+                .placeholder(R.drawable.ic_account_circle_white)
+                .into(avatarCIV);
 
         //Set display Name
         if (currentUser.getDisplayName() != null) {

@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -84,6 +85,11 @@ public class SetupAccountFragment extends Fragment {
 
 
         //@todo Display the previous image using glide if it exists
+        Glide.with(this)
+                .load(currentUser.getPhotoUrl())
+                .centerCrop()
+                .placeholder(R.drawable.ic_account_circle_white)
+                .into(avatarCIV);
 
 
         //Setup the button click listener to update the account details where necessary
@@ -120,6 +126,8 @@ public class SetupAccountFragment extends Fragment {
             UploadTask avatarUploadTask = avatarReference
                     .putBytes(avatarArrayBytes);
 
+            updateProgressBar.setProgress(0);
+
             avatarUploadTask
                     .addOnSuccessListener(taskSnapshot -> {
                         avatarReference.getDownloadUrl()
@@ -133,8 +141,9 @@ public class SetupAccountFragment extends Fragment {
                     .addOnFailureListener(e -> {
                         Log.e(TAG, "updateAccountDetails: Failed", e);
                     })
-                    .addOnPausedListener(taskSnapshot -> {
-                        //Show progress on a progress bar
+                    .addOnProgressListener(taskSnapshot -> {
+                        double progress = (taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount()) * 100;
+                        updateProgressBar.setProgress((int) progress);
                     });
         } else {
             uploadTheUpdates(null, displayName);
