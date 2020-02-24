@@ -25,6 +25,7 @@ public class ServicesRepository {
     }
 
     public void getServices() {
+
         mDatabase.collection("services")
                 .addSnapshotListener(
                         (queryDocumentSnapshots, e) -> {
@@ -35,13 +36,11 @@ public class ServicesRepository {
                                 return;
                             }
 
-                            List<Service> services = new ArrayList<>();
+                            Log.d(TAG, "getServices: " + queryDocumentSnapshots.toString());
 
-                            for (DocumentChange documentChange : queryDocumentSnapshots.getDocumentChanges()) {
-                                services.add(documentChange.getDocument().toObject(Service.class));
-                            }
+                            Log.d(TAG, "getServices: successful am about to show em => count: " + queryDocumentSnapshots.size());
 
-                            taskListener.showServices(services);
+                            taskListener.showServices(queryDocumentSnapshots.toObjects(Service.class));
                         }
                 );
     }

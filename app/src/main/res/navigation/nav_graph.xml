@@ -49,8 +49,8 @@
         android:label="Choose Service"
         tools:layout="@layout/fragment_choose">
         <action
-            android:id="@+id/action_chooseServiceFragment_to_locationFragment"
-            app:destination="@id/locationFragment" />
+            android:id="@+id/action_chooseServiceFragment_to_mapActivity"
+            app:destination="@id/mapActivity" />
     </fragment>
     <fragment
         android:id="@+id/carModelFragment"
@@ -62,18 +62,6 @@
             app:destination="@id/chooseServiceFragment" />
     </fragment>
     <fragment
-        android:id="@+id/locationFragment"
-        android:name="com.project.roadsideassistant.ui.fragments.gethelp.LocationFragment"
-        android:label="Pinpoint Location"
-        tools:layout="@layout/fragment_location">
-        <action
-            android:id="@+id/action_locationFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
-        <action
-            android:id="@+id/action_locationFragment_to_requestPermisionFragment"
-            app:destination="@id/requestPermisionFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/infoFragment"
         android:name="com.project.roadsideassistant.ui.fragments.gethelp.InfoFragment"
         android:label="Your Information"
@@ -83,9 +71,14 @@
         android:name="com.project.roadsideassistant.ui.fragments.profile.SetupAccountFragment"
         android:label="Setup Account"
         tools:layout="@layout/setup_account_fragment" />
-    <fragment
-        android:id="@+id/requestPermisionFragment"
-        android:name="com.project.roadsideassistant.ui.fragments.gethelp.RequestPermisionFragment"
+    <activity
+        android:id="@+id/mapActivity"
+        android:name="com.project.roadsideassistant.ui.MapActivity"
+        android:label="Choose  Location"
+        tools:layout="@layout/activity_map" />
+    <activity
+        android:id="@+id/requestPermissionActivity"
+        android:name="com.project.roadsideassistant.ui.RequestPermissionActivity"
         android:label="Request Permission"
-        tools:layout="@layout/fragment_request_permision" />
+        tools:layout="@layout/activity_request_permission" />
 </navigation>

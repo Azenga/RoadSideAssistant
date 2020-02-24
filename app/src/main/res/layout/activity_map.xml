@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.gethelp.LocationFragment">
+    tools:context=".ui.MapActivity">
 
     <fragment
         android:id="@+id/map"
@@ -13,26 +13,26 @@
         android:layout_height="match_parent" />
 
     <com.mancj.materialsearchbar.MaterialSearchBar
-        android:id="@+id/map_search_bar"
+        android:id="@+id/material_search_bar"
         style="@style/MaterialSearchBarLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:elevation="4dp"
         android:outlineProvider="bounds"
-        app:mt_hint="@string/material_search_hint"
+        app:mt_hint="@string/search_location_text"
         app:mt_maxSuggestionsCount="10"
         app:mt_navIconEnabled="true"
-        app:mt_placeholder="@string/material_search_hint"
+        app:mt_placeholder="@string/search_location_text"
         app:mt_speechMode="false" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/next_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:text="@string/next_text"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+        android:text="@string/next_text" />
 
 </RelativeLayout>

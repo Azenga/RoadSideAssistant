@@ -21,6 +21,7 @@
     <string name="next_text">Next</string>
     <string name="add_phone_text">Add Phone Number</string>
     <string name="permission_rejected">Permission not granted</string>
+    <string name="location_exception_message">Unable to get the last know location</string>
 
     <string-array name="car_models">
         <item>ASTON MARTIN DB7</item>
@@ -62,4 +63,5 @@
     <string name="request_permission">Request Permission</string>
     <string name="request_permission_explanation">This Application needs permission to access device location to provide required services, Please Allow the permission</string>
     <string name="grant_permission_text">Grant Permission</string>
+    <string name="search_location_text">Search Your Location...</string>
 </resources>

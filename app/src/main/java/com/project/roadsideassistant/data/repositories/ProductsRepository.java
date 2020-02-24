@@ -2,11 +2,9 @@ package com.project.roadsideassistant.data.repositories;
 
 import android.util.Log;
 
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.project.roadsideassistant.data.models.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsRepository {
@@ -31,13 +29,9 @@ public class ProductsRepository {
                         return;
                     }
 
-                    List<Product> products = new ArrayList<>();
+                    Log.d(TAG, "getProducts: Successful we are good to go => count: " + queryDocumentSnapshots.size());
 
-                    for (DocumentChange documentChange : queryDocumentSnapshots.getDocumentChanges()) {
-                        products.add(documentChange.getDocument().toObject(Product.class));
-                    }
-
-                    taskListener.showProducts(products);
+                    taskListener.showProducts(queryDocumentSnapshots.toObjects(Product.class));
 
                 });
     }

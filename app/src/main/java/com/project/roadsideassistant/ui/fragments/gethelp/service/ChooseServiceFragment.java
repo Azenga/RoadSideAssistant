@@ -48,7 +48,7 @@ public class ChooseServiceFragment extends Fragment {
         Button nextButton = view.findViewById(R.id.next_button);
 
         nextButton.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_chooseServiceFragment_to_locationFragment);
+            Navigation.findNavController(v).navigate(R.id.action_chooseServiceFragment_to_mapActivity);
         });
 
 

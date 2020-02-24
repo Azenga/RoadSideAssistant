@@ -1,5 +1,7 @@
 package com.project.roadsideassistant.ui.fragments.services;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -27,10 +29,12 @@ public class ServicesViewModel extends ViewModel implements ServicesRepository.O
 
     @Override
     public void showServices(List<Service> services) {
+        Log.d(TAG, "showServices: count: " + services.size());
         _services.setValue(services);
     }
 
     @Override
     public void showError(String message) {
+        Log.d(TAG, "showError: viewModel: " + message);
     }
 }
