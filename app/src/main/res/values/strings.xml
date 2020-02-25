@@ -50,6 +50,13 @@
         <item>Nissan</item>
     </string-array>
 
+    <string-array name="garares">
+        <item>Garage A</item>
+        <item>Garage B</item>
+        <item>Garage C</item>
+        <item>Garage D</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="display_name_hint">Dsiplay Name Loading...</string>
@@ -64,4 +71,8 @@
     <string name="request_permission_explanation">This Application needs permission to access device location to provide required services, Please Allow the permission</string>
     <string name="grant_permission_text">Grant Permission</string>
     <string name="search_location_text">Search Your Location...</string>
+    <string name="item_text">Item</string>
+    <string name="description_hint">Description...</string>
+    <string name="car_plate_text">Car Plate</string>
+    <string name="skip_text">Skip</string>
 </resources>

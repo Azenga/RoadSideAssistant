@@ -18,7 +18,7 @@
         android:id="@+id/profileFragment"
         android:name="com.project.roadsideassistant.ui.fragments.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/profile_fragment" >
+        tools:layout="@layout/profile_fragment">
         <action
             android:id="@+id/action_profileFragment_to_setupAccountFragment"
             app:destination="@id/setupAccountFragment" />
@@ -49,8 +49,8 @@
         android:label="Choose Service"
         tools:layout="@layout/fragment_choose">
         <action
-            android:id="@+id/action_chooseServiceFragment_to_mapActivity"
-            app:destination="@id/mapActivity" />
+            android:id="@+id/action_chooseServiceFragment_to_chooseProductFragment"
+            app:destination="@id/chooseProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/carModelFragment"
@@ -65,20 +65,36 @@
         android:id="@+id/infoFragment"
         android:name="com.project.roadsideassistant.ui.fragments.gethelp.InfoFragment"
         android:label="Your Information"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_garageFragment"
+            app:destination="@id/garageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/setupAccountFragment"
         android:name="com.project.roadsideassistant.ui.fragments.profile.SetupAccountFragment"
         android:label="Setup Account"
         tools:layout="@layout/setup_account_fragment" />
-    <activity
-        android:id="@+id/mapActivity"
-        android:name="com.project.roadsideassistant.ui.MapActivity"
-        android:label="Choose  Location"
-        tools:layout="@layout/activity_map" />
-    <activity
-        android:id="@+id/requestPermissionActivity"
-        android:name="com.project.roadsideassistant.ui.RequestPermissionActivity"
-        android:label="Request Permission"
-        tools:layout="@layout/activity_request_permission" />
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.gethelp.LocationFragment"
+        android:label="Choose Location"
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_locationFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseProductFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.gethelp.products.ChooseProductFragment"
+        android:label="Choose Product">
+        <action
+            android:id="@+id/action_chooseProductFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/garageFragment"
+        android:name="com.project.roadsideassistant.ui.fragments.gethelp.GarageFragment"
+        android:label="fragment_garage"
+        tools:layout="@layout/fragment_garage" />
 </navigation>

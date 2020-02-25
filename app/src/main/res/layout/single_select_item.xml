@@ -9,7 +9,7 @@
         android:id="@+id/checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        android:text="@string/services_text" />
+        android:text="@string/item_text"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
 </LinearLayout>
