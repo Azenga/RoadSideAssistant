@@ -44,7 +44,6 @@ public class ChooseServiceFragment extends Fragment {
         chooseServiceRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //Register the button and it's click listener
-
         Button nextButton = view.findViewById(R.id.next_button);
 
         nextButton.setOnClickListener(v -> {

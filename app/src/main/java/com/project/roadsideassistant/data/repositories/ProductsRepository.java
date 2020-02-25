@@ -24,8 +24,9 @@ public class ProductsRepository {
                 .addSnapshotListener((queryDocumentSnapshots, e) -> {
 
                     if (e != null) {
-                        taskListener.showError(e.getLocalizedMessage());
                         Log.e(TAG, "getProducts: Products", e);
+                        assert taskListener != null;
+                        taskListener.showError(e.getLocalizedMessage());
                         return;
                     }
 

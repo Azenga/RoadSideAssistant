@@ -25,7 +25,7 @@ public class ProductsViewModel extends ViewModel implements ProductsRepository.P
         productsRepository.getProducts();
     }
 
-    public LiveData<List<Product>> getProducts(){
+    public LiveData<List<Product>> getProducts() {
         return _products;
     }
 
@@ -37,6 +37,7 @@ public class ProductsViewModel extends ViewModel implements ProductsRepository.P
 
     @Override
     public void showError(String message) {
+        Log.d(TAG, "showError: viewmodel" + message);
         //Show error
     }
 }

@@ -20,6 +20,7 @@ public class ProductsFragment extends Fragment {
     private RecyclerView productsRecyclerView;
 
     private ProductsAdapter productsAdapter;
+    private ProductsViewModel productsViewModel;
 
     public ProductsFragment() {
         // Required empty public constructor
@@ -48,11 +49,14 @@ public class ProductsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ProductsViewModel productsViewModel = new ViewModelProvider(getActivity()).get(ProductsViewModel.class);
+        productsViewModel = new ViewModelProvider(getActivity()).get(ProductsViewModel.class);
 
         productsViewModel.getProducts().observe(getViewLifecycleOwner(), products -> {
+
             productsAdapter = new ProductsAdapter(products);
+
             productsRecyclerView.setAdapter(productsAdapter);
+
         });
 
     }
