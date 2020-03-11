@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.button.MaterialButton;
 import com.project.roadsideassistant.R;
+import com.project.roadsideassistant.data.models.Message;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LocationFragment extends Fragment implements OnMapReadyCallback {
+    private static final String TAG = "LocationFragment";
 
     private GoogleMap mGoogleMap;
     private MapView mMapView;
@@ -34,7 +37,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
 
 
     public LocationFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -58,16 +60,28 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
             mMapView.getMapAsync(this);
         }
 
+        //Get the message from the previous fragment
+        assert getArguments() != null;
+        Message message = LocationFragmentArgs.fromBundle(getArguments()).getMessage();
+
+        assert message != null;
+        Log.d(TAG, "onViewCreated: products count: " + message.getProductsList().size());
+
         MaterialButton nextButton = view.findViewById(R.id.next_button);
 
         nextButton.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_locationFragment_to_infoFragment);
+            LocationFragmentDirections.ActionLocationFragmentToInfoFragment action = LocationFragmentDirections.actionLocationFragmentToInfoFragment();
+            action.setMessage(message);
+            Navigation.findNavController(v).navigate(action);
         });
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        MapsInitializer.initialize(getContext());
+
+        assert getActivity() != null;
+
+        MapsInitializer.initialize(getActivity());
         mGoogleMap = googleMap;
 
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);

@@ -1,5 +1,6 @@
 package com.project.roadsideassistant.ui.fragments.gethelp.service;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.project.roadsideassistant.R;
 import com.project.roadsideassistant.data.models.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdapter.ServiceViewHolder> {
-
+    private static final String TAG = "ChooseServiceAdapter";
     private List<Service> services;
 
     public ChooseServiceAdapter(List<Service> services) {
@@ -30,11 +32,29 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
     @Override
     public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position) {
         holder.checkbox.setText(services.get(position).getName());
+
+        holder.checkbox.setOnCheckedChangeListener(((buttonView, isChecked) -> {
+            if (services.get(position).isChecked()) services.get(position).setChecked(false);
+            else services.get(position).setChecked(true);
+
+            Log.d(TAG, "onBindViewHolder: service: " + services);
+        }));
     }
 
     @Override
     public int getItemCount() {
         return services.size();
+    }
+
+    public List<Service> getCheckedServices() {
+        List<Service> serviceList = new ArrayList<>();
+
+        for (Service service : services) {
+            if (service.isChecked())
+                serviceList.add(service);
+        }
+
+        return serviceList;
     }
 
     class ServiceViewHolder extends RecyclerView.ViewHolder {
@@ -46,4 +66,5 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
             checkbox = itemView.findViewById(R.id.checkbox);
         }
     }
+
 }

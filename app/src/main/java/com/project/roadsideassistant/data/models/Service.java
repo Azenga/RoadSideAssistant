@@ -1,9 +1,18 @@
 package com.project.roadsideassistant.data.models;
 
+import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.Exclude;
+
 public class Service {
+
+    @DocumentId
+    private String id;
 
     private String name;
     private String description;
+
+    @Exclude
+    private boolean isChecked;
 
     public Service() {
     }
@@ -11,6 +20,7 @@ public class Service {
     public Service(String name, String description) {
         this.name = name;
         this.description = description;
+        isChecked = false;
     }
 
     public String getName() {
@@ -21,11 +31,25 @@ public class Service {
         return description;
     }
 
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
     @Override
     public String toString() {
         return "Service{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", isChecked=" + isChecked +
                 '}';
+    }
+
+    public String getId() {
+        return id;
     }
 }

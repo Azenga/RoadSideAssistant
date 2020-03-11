@@ -11,22 +11,26 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.project.roadsideassistant.R;
+import com.project.roadsideassistant.data.models.Message;
+import com.project.roadsideassistant.data.models.Service;
 
 public class ChooseServiceFragment extends Fragment {
+    private static final String TAG = "ChooseServiceFragment";
 
     private RecyclerView chooseServiceRecyclerView;
 
     private ChooseServiceAdapter chooseServiceAdapter;
+    private Message message;
 
     public ChooseServiceFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,8 +50,26 @@ public class ChooseServiceFragment extends Fragment {
         //Register the button and it's click listener
         Button nextButton = view.findViewById(R.id.next_button);
 
+        assert getArguments() != null;
+
+        //Getting the passed variables
+        message = ChooseServiceFragmentArgs.fromBundle(getArguments()).getMessage();
+
+        assert message != null;
+        Log.d(TAG, "onViewCreated: car model : " + message.getCarModel());
+
         nextButton.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_chooseServiceFragment_to_chooseProductFragment);
+
+            for (Service service : chooseServiceAdapter.getCheckedServices()) {
+                message.addProduct(service.getId());
+            }
+
+            Log.d(TAG, "onViewCreated: message services count: " + message.getServicesList().size());
+
+            ChooseServiceFragmentDirections.ActionChooseServiceFragmentToChooseProductFragment action = ChooseServiceFragmentDirections.actionChooseServiceFragmentToChooseProductFragment();
+            action.setMessage(message);
+
+            Navigation.findNavController(v).navigate(action);
         });
 
 

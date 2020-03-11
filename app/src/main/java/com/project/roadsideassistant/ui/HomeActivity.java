@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         //Register the NavHost
         NavHost navHost = (NavHost) getSupportFragmentManager().findFragmentById(R.id.fragment);
 
-        //Navcontroller Setup with action bar
+        //NavController Setup with action bar
         NavController navController = navHost.getNavController();
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
                         R.id.profileFragment,
                         R.id.servicesFragment,
                         R.id.productsFragment,
-                        R.id.postsFragment,
+                        R.id.notificationsFragment,
                         R.id.aboutFragment
                 )
         );

@@ -1,6 +1,7 @@
 package com.project.roadsideassistant.ui.fragments.gethelp.products;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +16,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.roadsideassistant.R;
+import com.project.roadsideassistant.data.models.Message;
 
 public class ChooseProductFragment extends Fragment {
+    private static final String TAG = "ChooseProductFragment";
 
-    private ChooseProductViewModel mViewModel;
     private ChooseProductAdapter chooseProductAdapter;
     private RecyclerView productsRecyclerView;
+    private Message message;
 
-    public static ChooseProductFragment newInstance() {
-        return new ChooseProductFragment();
+    public ChooseProductFragment() {
     }
 
     @Override
@@ -40,11 +42,22 @@ public class ChooseProductFragment extends Fragment {
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         productsRecyclerView.setHasFixedSize(true);
 
+        assert getArguments() != null;
+        //The the message argument first
+        message = ChooseProductFragmentArgs.fromBundle(getArguments()).getMessage();
+        assert message != null;
+        Log.d(TAG, "onViewCreated: services length : " + message.getServicesList().size());
         //Register the button and it's click listener
         Button nextButton = view.findViewById(R.id.next_button);
 
         nextButton.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_chooseProductFragment_to_locationFragment);
+            assert chooseProductAdapter != null;
+            message.addProducts(chooseProductAdapter.getCheckedProducts());
+            ChooseProductFragmentDirections.ActionChooseProductFragmentToLocationFragment action = ChooseProductFragmentDirections.actionChooseProductFragmentToLocationFragment();
+            action.setMessage(message);
+            Navigation.findNavController(v).navigate(action);
+
+            Log.d(TAG, "onViewCreated: products count: " + chooseProductAdapter.getCheckedProducts().size());
         });
 
     }
@@ -52,7 +65,7 @@ public class ChooseProductFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ChooseProductViewModel.class);
+        ChooseProductViewModel mViewModel = new ViewModelProvider(this).get(ChooseProductViewModel.class);
 
         mViewModel.getProducts().observe(getViewLifecycleOwner(), products -> {
 

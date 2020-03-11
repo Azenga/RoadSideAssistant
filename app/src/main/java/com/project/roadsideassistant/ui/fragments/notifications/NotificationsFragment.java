@@ -1,5 +1,6 @@
-package com.project.roadsideassistant.ui.fragments.blog;
+package com.project.roadsideassistant.ui.fragments.notifications;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -14,12 +15,12 @@ import android.view.ViewGroup;
 
 import com.project.roadsideassistant.R;
 
-public class PostsFragment extends Fragment {
+public class NotificationsFragment extends Fragment {
 
-    private PostsViewModel mViewModel;
+    private NotificationsViewModel mViewModel;
 
-    public static PostsFragment newInstance() {
-        return new PostsFragment();
+    public static NotificationsFragment newInstance() {
+        return new NotificationsFragment();
     }
 
     @Override
@@ -31,8 +32,8 @@ public class PostsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(PostsViewModel.class);
-        // TODO: Use the ViewModel
+        mViewModel = new ViewModelProvider(this).get(NotificationsViewModel.class);
+
     }
 
 }

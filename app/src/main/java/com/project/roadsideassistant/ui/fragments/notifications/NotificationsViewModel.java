@@ -1,10 +1,10 @@
-package com.project.roadsideassistant.ui.fragments.blog;
+package com.project.roadsideassistant.ui.fragments.notifications;
 
 import androidx.lifecycle.ViewModel;
 
 import com.project.roadsideassistant.data.repositories.UserRepository;
 
-public class PostsViewModel extends ViewModel {
+public class NotificationsViewModel extends ViewModel {
 
     String displayName, email, phone;
 

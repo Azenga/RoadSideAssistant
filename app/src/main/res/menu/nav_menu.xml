@@ -24,10 +24,10 @@
         android:orderInCategory="103"
         android:title="@string/products_text" />
     <item
-        android:id="@+id/postsFragment"
-        android:icon="@drawable/ic_chat_bubble"
+        android:id="@+id/notificationsFragment"
+        android:icon="@drawable/ic_notifications"
         android:orderInCategory="104"
-        android:title="@string/blog_text" />
+        android:title="@string/notifications_text" />
     <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_info"

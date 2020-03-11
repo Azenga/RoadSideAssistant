@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.project.roadsideassistant.R;
 
 public class ServicesFragment extends Fragment {
+    private static final String TAG = "ServicesFragment";
 
     private RecyclerView servicesRecyclerView;
-    private ServicesViewModel servicesViewModel;
 
     private ServicesAdapter servicesAdapter;
 
@@ -43,7 +43,8 @@ public class ServicesFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        servicesViewModel = new ViewModelProvider(getActivity()).get(ServicesViewModel.class);
+        assert getActivity() != null;
+        ServicesViewModel servicesViewModel = new ViewModelProvider(getActivity()).get(ServicesViewModel.class);
 
         servicesViewModel.getServices().observe(getViewLifecycleOwner(), services -> {
 
