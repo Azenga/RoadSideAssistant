@@ -1,6 +1,9 @@
 package com.project.roadsideassistant.ui;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,9 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
-import androidx.navigation.NavHost;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -40,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     //Drawer Header Views
     private CircleImageView userAvatarCIV;
     private TextView emailTV;
+    private static final int CALL_PHONE_RC = 22;
 
 
     @Override
@@ -54,14 +58,11 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Register the NavHost
-        NavHost navHost = (NavHost) getSupportFragmentManager().findFragmentById(R.id.fragment);
-
         //NavController Setup with action bar
-        NavController navController = navHost.getNavController();
+        NavController navController = Navigation.findNavController(this, R.id.fragment);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setDrawerLayout(drawerLayout).build();
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
         appBarConfiguration.getTopLevelDestinations().addAll(
                 Arrays.asList(
                         R.id.homeFragment,
@@ -101,7 +102,6 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.options_menu, menu);
-
         return true;
     }
 
@@ -127,10 +127,25 @@ public class HomeActivity extends AppCompatActivity {
 
                 alertDialog.show();
                 return true;
+            case R.id.call_agent:
+
+                initiateCall();
+
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private void initiateCall() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:+254700016349"));
+            startActivity(intent);
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, CALL_PHONE_RC);
+        }
     }
 
     private void logoutUser() {
@@ -144,9 +159,9 @@ public class HomeActivity extends AppCompatActivity {
      */
     private void sendToLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -163,11 +178,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Gets the instance of the authenticated user and uses it to update the UI
-     *
-     * @param currentUser
-     */
     private void updateUI(FirebaseUser currentUser) {
 
         emailTV.setText(currentUser.getEmail());

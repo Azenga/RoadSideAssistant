@@ -1,9 +1,8 @@
 package com.project.roadsideassistant.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.project.roadsideassistant.R;
@@ -29,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        //Instantiating firebase instance
+        //Instantiating fire-base instance
         mAuth = FirebaseAuth.getInstance();
 
         EditText emailTxt = findViewById(R.id.email_txt);
@@ -47,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
             String email = emailTxt.getText().toString().trim();
             String password = passwordTxt.getText().toString().trim();
 
-            if (email == null) {
+            if (TextUtils.isEmpty(email)) {
                 emailTxt.setError("Email is Required");
                 emailTxt.requestFocus();
                 return;
@@ -72,9 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
-        gotoLoginTv.setOnClickListener(v -> {
-            finish();
-        });
+        gotoLoginTv.setOnClickListener(v -> finish());
+
     }
 
     private void registerUser(String email, String password) {

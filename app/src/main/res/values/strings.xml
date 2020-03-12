@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Road Ass</string>
+    <string name="app_name">Road Assistant</string>
     <string name="login_text">Login</string>
     <string name="register_text">Register</string>
     <string name="signup_prompt">Don\'t have an account yet?</string>
@@ -68,7 +68,7 @@
     <string name="material_search_hint">Search For Place…</string>
     <string name="application_logo">Application Logo</string>
     <string name="request_permission">Request Permission</string>
-    <string name="request_permission_explanation">This Application needs permission to access device location to provide required services, Please Allow the permission</string>
+    <string name="request_permission_explanation">This Application needs permission to access device location, call manager, gallery and other stuff that will be shown in the following dialogs to provide required services, Please Allow the permission</string>
     <string name="grant_permission_text">Grant Permission</string>
     <string name="search_location_text">Search Your Location…</string>
     <string name="item_text">Item</string>
@@ -86,4 +86,5 @@
     <string name="description_loading_text">Description Loading…</string>
     <string name="garage_text">Garage</string>
     <string name="garage_loading_text">Garage Loading…</string>
+    <string name="call_agent_text">Call Agent</string>
 </resources>

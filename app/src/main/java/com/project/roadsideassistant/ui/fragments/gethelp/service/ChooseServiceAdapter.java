@@ -37,7 +37,7 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
             if (services.get(position).isChecked()) services.get(position).setChecked(false);
             else services.get(position).setChecked(true);
 
-            Log.d(TAG, "onBindViewHolder: service: " + services);
+            Log.d(TAG, "onBindViewHolder: service: " + services.get(position));
         }));
     }
 
