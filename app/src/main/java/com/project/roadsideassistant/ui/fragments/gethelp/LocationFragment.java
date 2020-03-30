@@ -2,16 +2,14 @@ package com.project.roadsideassistant.ui.fragments.gethelp;
 
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,9 +32,19 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mGoogleMap;
     private MapView mMapView;
     private View mView;
+    private Message message;
 
 
     public LocationFragment() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //Get the message from the previous fragment
+        assert getArguments() != null;
+        message = LocationFragmentArgs.fromBundle(getArguments()).getMessage();
     }
 
     @Override
@@ -59,13 +67,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
             mMapView.onResume();
             mMapView.getMapAsync(this);
         }
-
-        //Get the message from the previous fragment
-        assert getArguments() != null;
-        Message message = LocationFragmentArgs.fromBundle(getArguments()).getMessage();
-
-        assert message != null;
-        Log.d(TAG, "onViewCreated: products count: " + message.getProductsList().size());
 
         MaterialButton nextButton = view.findViewById(R.id.next_button);
 

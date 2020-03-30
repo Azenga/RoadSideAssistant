@@ -60,16 +60,12 @@ public class ChooseServiceFragment extends Fragment {
 
         nextButton.setOnClickListener(v -> {
 
-            for (Service service : chooseServiceAdapter.getCheckedServices()) {
-                message.addProduct(service.getId());
-            }
-
-            Log.d(TAG, "onViewCreated: message services count: " + message.getServicesList().size());
-
+            message.addServices(chooseServiceAdapter.getCheckedServices());
             ChooseServiceFragmentDirections.ActionChooseServiceFragmentToChooseProductFragment action = ChooseServiceFragmentDirections.actionChooseServiceFragmentToChooseProductFragment();
             action.setMessage(message);
-
             Navigation.findNavController(v).navigate(action);
+
+            Log.d(TAG, "onViewCreated: services count: " + chooseServiceAdapter.getCheckedServices().size());
         });
 
 
@@ -84,7 +80,6 @@ public class ChooseServiceFragment extends Fragment {
         viewModel.getServices().observe(getViewLifecycleOwner(), services -> {
 
             chooseServiceAdapter = new ChooseServiceAdapter(services);
-
             chooseServiceRecyclerView.setAdapter(chooseServiceAdapter);
 
         });

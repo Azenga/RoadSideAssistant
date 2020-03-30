@@ -39,19 +39,20 @@ public class ChooseProductAdapter extends RecyclerView.Adapter<ChooseProductAdap
             if (products.get(position).isChecked())
                 products.get(position).setChecked(false);
             else products.get(position).setChecked(true);
+
             Log.d(TAG, "onBindViewHolder: product: " + products.get(position));
         });
 
     }
 
     public List<Product> getCheckedProducts() {
-        List<Product> products = new ArrayList<>();
+        List<Product> selectedProducts = new ArrayList<>();
 
         for (Product product : products)
             if (product.isChecked())
-                products.add(product);
+                selectedProducts.add(product);
 
-        return products;
+        return selectedProducts;
 
     }
 
@@ -60,10 +61,10 @@ public class ChooseProductAdapter extends RecyclerView.Adapter<ChooseProductAdap
         return products.size();
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder {
+    static class ProductViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkBox;
 
-        public ProductViewHolder(@NonNull View itemView) {
+        ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.checkbox);
         }

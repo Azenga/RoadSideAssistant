@@ -17,6 +17,7 @@ public class Product implements Serializable {
     private String description;
 
     public Product() {
+        isChecked = false;
     }
 
     public Product(String name, String description) {

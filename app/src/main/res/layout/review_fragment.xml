@@ -91,6 +91,47 @@
             android:text="@string/garage_loading_text"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:text="@string/selected_services_count_text"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+        <TextView
+            android:id="@+id/services_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/count_hint"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:text="@string/selected_products_count_text"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+        <TextView
+            android:id="@+id/products_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/count_hint"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+        <Button
+            android:id="@+id/send_request_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/send_request_text" />
+
     </LinearLayout>
 
 </ScrollView>

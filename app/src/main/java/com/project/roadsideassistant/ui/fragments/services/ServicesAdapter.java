@@ -38,10 +38,10 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
         return services.size();
     }
 
-    public class ServiceViewHolder extends RecyclerView.ViewHolder {
+    static class ServiceViewHolder extends RecyclerView.ViewHolder {
         TextView nameTV, descriptionTV;
 
-        public ServiceViewHolder(@NonNull View itemView) {
+        ServiceViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nameTV = itemView.findViewById(R.id.name);

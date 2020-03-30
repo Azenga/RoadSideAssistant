@@ -39,11 +39,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         return productList.size();
     }
 
-    class ProductViewHolder extends RecyclerView.ViewHolder {
+    static class ProductViewHolder extends RecyclerView.ViewHolder {
 
         TextView nameTV, descriptionTV;
 
-        public ProductViewHolder(@NonNull View itemView) {
+        ProductViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nameTV = itemView.findViewById(R.id.name);

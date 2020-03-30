@@ -17,6 +17,7 @@ public class Service implements Serializable {
     private boolean isChecked;
 
     public Service() {
+        isChecked = false;
     }
 
     public Service(String name, String description) {

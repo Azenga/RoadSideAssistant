@@ -21,7 +21,6 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
 
     public ChooseServiceAdapter(List<Service> services) {
         this.services = services;
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -35,7 +34,8 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
         holder.checkbox.setText(services.get(position).getName());
 
         holder.checkbox.setOnCheckedChangeListener(((buttonView, isChecked) -> {
-            if (services.get(position).isChecked()) services.get(position).setChecked(false);
+            if (services.get(position).isChecked())
+                services.get(position).setChecked(false);
             else services.get(position).setChecked(true);
 
             Log.d(TAG, "onBindViewHolder: service: " + services.get(position));
@@ -48,14 +48,14 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
     }
 
     public List<Service> getCheckedServices() {
-        List<Service> serviceList = new ArrayList<>();
+        List<Service> selectedServices = new ArrayList<>();
 
         for (Service service : services) {
             if (service.isChecked())
-                serviceList.add(service);
+                selectedServices.add(service);
         }
 
-        return serviceList;
+        return selectedServices;
     }
 
     static class ServiceViewHolder extends RecyclerView.ViewHolder {

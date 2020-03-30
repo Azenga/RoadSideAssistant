@@ -141,7 +141,7 @@ public class Message implements Serializable {
 
     public void addServices(List<Service> services) {
         for (Service service : services) {
-            productsList.add(service.getId());
+            servicesList.add(service.getId());
         }
     }
 

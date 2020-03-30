@@ -15,7 +15,7 @@
         android:title="@string/profile_text" />
     <item
         android:id="@+id/servicesFragment"
-        android:icon="@drawable/ic_list"
+        android:icon="@drawable/ic_settings_black_24dp"
         android:orderInCategory="102"
         android:title="@string/services_text" />
     <item

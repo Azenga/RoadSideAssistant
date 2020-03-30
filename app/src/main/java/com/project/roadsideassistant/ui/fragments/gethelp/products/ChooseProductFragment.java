@@ -30,6 +30,14 @@ public class ChooseProductFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        assert getArguments() != null;
+        //The the message argument first
+        message = ChooseProductFragmentArgs.fromBundle(getArguments()).getMessage();
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.choose_product_fragment, container, false);
@@ -39,17 +47,13 @@ public class ChooseProductFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        assert getContext() != null;
+
         productsRecyclerView = view.findViewById(R.id.products_recycler_view);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        assert getContext() != null;
         productsRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         productsRecyclerView.setHasFixedSize(true);
 
-        assert getArguments() != null;
-        //The the message argument first
-        message = ChooseProductFragmentArgs.fromBundle(getArguments()).getMessage();
-        assert message != null;
-        Log.d(TAG, "onViewCreated: services length : " + message.getServicesList().size());
         //Register the button and it's click listener
         Button nextButton = view.findViewById(R.id.next_button);
 
