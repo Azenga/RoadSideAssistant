@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +41,8 @@ public class ChooseProductFragment extends Fragment {
 
         productsRecyclerView = view.findViewById(R.id.products_recycler_view);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        assert getContext() != null;
+        productsRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         productsRecyclerView.setHasFixedSize(true);
 
         assert getArguments() != null;

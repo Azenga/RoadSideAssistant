@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +69,7 @@ public class ProfileFragment extends Fragment {
                 .into(avatarCIV);
 
         //Set display Name
-        if (currentUser.getDisplayName() != null) {
+        if (!TextUtils.isEmpty(currentUser.getDisplayName())) {
             displayNameTV.setText(currentUser.getDisplayName());
         }
 
@@ -76,7 +77,7 @@ public class ProfileFragment extends Fragment {
         emailTV.setText(currentUser.getEmail());
 
         //Check user phone number
-        if (currentUser.getPhoneNumber() != null) {
+        if (!TextUtils.isEmpty(currentUser.getPhoneNumber())) {
             phoneTV.setText(currentUser.getPhoneNumber());
         }
 

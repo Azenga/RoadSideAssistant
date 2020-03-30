@@ -3,7 +3,9 @@ package com.project.roadsideassistant.data.models;
 import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.Exclude;
 
-public class Service {
+import java.io.Serializable;
+
+public class Service implements Serializable {
 
     @DocumentId
     private String id;

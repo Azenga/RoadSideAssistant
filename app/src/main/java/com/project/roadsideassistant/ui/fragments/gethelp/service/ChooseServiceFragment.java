@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,9 +30,6 @@ public class ChooseServiceFragment extends Fragment {
     private ChooseServiceAdapter chooseServiceAdapter;
     private Message message;
 
-    public ChooseServiceFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +44,8 @@ public class ChooseServiceFragment extends Fragment {
         chooseServiceRecyclerView = view.findViewById(R.id.choose_service_recycler_view);
         chooseServiceRecyclerView.setHasFixedSize(true);
         chooseServiceRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        assert getContext() != null;
+        chooseServiceRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
 
         //Register the button and it's click listener
         Button nextButton = view.findViewById(R.id.next_button);

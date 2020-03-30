@@ -21,6 +21,7 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
 
     public ChooseServiceAdapter(List<Service> services) {
         this.services = services;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -57,11 +58,11 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
         return serviceList;
     }
 
-    class ServiceViewHolder extends RecyclerView.ViewHolder {
+    static class ServiceViewHolder extends RecyclerView.ViewHolder {
 
         CheckBox checkbox;
 
-        public ServiceViewHolder(@NonNull View itemView) {
+        ServiceViewHolder(@NonNull View itemView) {
             super(itemView);
             checkbox = itemView.findViewById(R.id.checkbox);
         }

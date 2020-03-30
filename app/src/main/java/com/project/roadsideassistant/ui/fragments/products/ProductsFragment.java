@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,12 +21,6 @@ public class ProductsFragment extends Fragment {
     private RecyclerView productsRecyclerView;
 
     private ProductsAdapter productsAdapter;
-    private ProductsViewModel productsViewModel;
-
-    public ProductsFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,8 +34,10 @@ public class ProductsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //Register and setup the recycler view
+        assert getContext() != null;
         productsRecyclerView = view.findViewById(R.id.products_recycler_view);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        productsRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         productsRecyclerView.setHasFixedSize(true);
 
     }
@@ -49,7 +46,7 @@ public class ProductsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        productsViewModel = new ViewModelProvider(getActivity()).get(ProductsViewModel.class);
+        ProductsViewModel productsViewModel = new ViewModelProvider(this).get(ProductsViewModel.class);
 
         productsViewModel.getProducts().observe(getViewLifecycleOwner(), products -> {
 

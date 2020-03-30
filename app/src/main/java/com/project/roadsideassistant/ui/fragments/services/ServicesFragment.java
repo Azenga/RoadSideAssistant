@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,9 +22,6 @@ public class ServicesFragment extends Fragment {
 
     private ServicesAdapter servicesAdapter;
 
-    public static ServicesFragment newInstance() {
-        return new ServicesFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -36,6 +34,8 @@ public class ServicesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         servicesRecyclerView = view.findViewById(R.id.services_recycler_view);
         servicesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        assert getContext() != null;
+        servicesRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         servicesRecyclerView.setHasFixedSize(true);
     }
 

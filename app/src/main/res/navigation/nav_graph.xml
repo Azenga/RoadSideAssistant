@@ -13,6 +13,21 @@
         <action
             android:id="@+id/action_homeFragment_to_carModelFragment"
             app:destination="@id/carModelFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_servicesFragment"
+            app:destination="@id/servicesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_setupAccountFragment"
+            app:destination="@id/setupAccountFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

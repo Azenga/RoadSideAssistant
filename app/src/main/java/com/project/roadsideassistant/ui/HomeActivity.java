@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     //Drawer Header Views
     private CircleImageView userAvatarCIV;
     private TextView emailTV;
-    private static final int CALL_PHONE_RC = 22;
+    public static final int CALL_PHONE_RC = 22;
 
 
     @Override
@@ -141,7 +141,7 @@ public class HomeActivity extends AppCompatActivity {
     private void initiateCall() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse("tel:+254700016349"));
+            intent.setData(Uri.parse("tel:+254700521163"));
             startActivity(intent);
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, CALL_PHONE_RC);
