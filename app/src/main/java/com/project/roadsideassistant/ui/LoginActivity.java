@@ -1,7 +1,5 @@
 package com.project.roadsideassistant.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,18 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.project.roadsideassistant.R;
+import com.project.roadsideassistant.utils.UIHelpers;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
 
     private FirebaseAuth mAuth;
-    ProgressBar loginProgressBar;
+    private ProgressBar loginProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton.setOnClickListener(v -> {
 
-            String email = emailTxt.getText().toString().trim();
-            String password = passwordTxt.getText().toString().trim();
-
-            if (email == null) {
-                emailTxt.setError("Email is Required");
-                emailTxt.requestFocus();
-                return;
-            }
+            String email = String.valueOf(emailTxt.getText());
+            String password = String.valueOf(passwordTxt.getText());
 
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
 
@@ -82,7 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         sendHome();
                     } else {
-                        Toast.makeText(this, "Login failed, try again later", Toast.LENGTH_SHORT).show();
+
+                        assert task.getException() != null;
+
+                        UIHelpers.toast("Login failed " + task.getException().getLocalizedMessage());
                         Log.e(TAG, "Authentication Failed: ", task.getException());
                     }
                 });
@@ -92,11 +89,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if (user != null) {
-            sendHome();
-        }
+        if (currentUser != null) sendHome();
     }
 
     private void sendHome() {

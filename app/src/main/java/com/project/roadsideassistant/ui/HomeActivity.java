@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -28,6 +27,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.project.roadsideassistant.R;
+import com.project.roadsideassistant.utils.UIHelpers;
 
 import java.util.Arrays;
 
@@ -122,7 +122,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", ((dialog, which) -> {
                     Log.d(TAG, "onOptionsItemSelected: Negative Button");
-                    Toast.makeText(this, "Operation cancelled", Toast.LENGTH_SHORT).show();
+                    UIHelpers.toast("Operation cancelled");
                 }));
 
                 alertDialog.show();

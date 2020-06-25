@@ -2,12 +2,6 @@ package com.project.roadsideassistant.ui.fragments.gethelp;
 
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.project.roadsideassistant.R;
 import com.project.roadsideassistant.data.models.Message;
-import com.project.roadsideassistant.ui.fragments.gethelp.service.ChooseServiceFragmentDirections;
 
 /**
  * A simple {@link Fragment} subclass.

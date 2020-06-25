@@ -10,12 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.project.roadsideassistant.R;
+import com.project.roadsideassistant.utils.UIHelpers;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -95,7 +95,9 @@ public class RegisterActivity extends AppCompatActivity {
                         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                         finish();
                     } else {
-                        Toast.makeText(this, "Registration failed, try again later", Toast.LENGTH_SHORT).show();
+                        assert task.getException() != null;
+
+                        UIHelpers.toast("Registration failed: " + task.getException().getLocalizedMessage());
                         Log.e(TAG, "Authentication Failed: ", task.getException());
                     }
                 });

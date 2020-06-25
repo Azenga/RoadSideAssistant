@@ -1,12 +1,12 @@
 package com.project.roadsideassistant;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.project.roadsideassistant.ui.HomeActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.project.roadsideassistant.ui.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
 
-            Intent intent = new Intent(this, HomeActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
