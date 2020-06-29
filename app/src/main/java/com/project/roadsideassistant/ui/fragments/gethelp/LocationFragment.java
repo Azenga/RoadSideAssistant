@@ -83,6 +83,7 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
         assert getActivity() != null;
 
         MapsInitializer.initialize(getActivity());
+
         mGoogleMap = googleMap;
 
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);

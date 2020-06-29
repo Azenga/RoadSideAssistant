@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -91,39 +92,35 @@
             android:text="@string/garage_loading_text"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:text="@string/selected_services_text"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selected_services_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/single_item_layout" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:padding="8dp"
-            android:text="@string/selected_services_count_text"
+            android:text="@string/selected_products_text"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
-        <TextView
-            android:id="@+id/services_count_tv"
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selected_products_recycler_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="@string/count_hint"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:text="@string/selected_products_count_text"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
-
-        <TextView
-            android:id="@+id/products_count_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="@string/count_hint"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/single_item_layout" />
 
         <Button
             android:id="@+id/send_request_btn"

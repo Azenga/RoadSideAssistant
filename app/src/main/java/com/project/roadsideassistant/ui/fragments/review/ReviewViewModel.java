@@ -9,14 +9,12 @@ import com.project.roadsideassistant.data.repositories.MessageRepository;
 
 public class ReviewViewModel extends ViewModel implements MessageRepository.MessageTaskListener {
 
-    private MessageRepository messageRepository;
-    private MutableLiveData<String> _successMessage;
-    private MutableLiveData<String> _errorMessage;
+    private MessageRepository messageRepository = new MessageRepository(this);
+
+    private MutableLiveData<String> _successMessage = new MutableLiveData<>();
+    private MutableLiveData<String> _errorMessage = new MutableLiveData<>();
 
     public ReviewViewModel() {
-        messageRepository = new MessageRepository(this);
-        _successMessage = new MutableLiveData<>();
-        _errorMessage = new MutableLiveData<>();
     }
 
     public void addMessage(Message message) {

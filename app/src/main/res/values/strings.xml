@@ -90,9 +90,10 @@
     <string name="name_hint">Name…</string>
     <string name="account_circle_text">Account Circle</string>
     <string name="contact_text">Contact</string>
-    <string name="selected_services_count_text">Selected Services Count</string>
+    <string name="selected_services_text">Selected Services</string>
     <string name="count_hint">Count…</string>
-    <string name="selected_products_count_text">Selected Products Count</string>
+    <string name="selected_products_text">Selected Products</string>
     <string name="send_request_text">Send Request</string>
     <string name="no_garage">No Garage Selected</string>
+    <string name="item_name_text">Item Name</string>
 </resources>

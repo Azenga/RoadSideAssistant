@@ -23,7 +23,6 @@ public class MessageRepository {
                     } else {
                         listener.onError(task.getException());
                     }
-
                 });
     }
 

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.roadsideassistant.R;
 import com.project.roadsideassistant.data.models.Message;
@@ -50,8 +51,12 @@ public class ReviewFragment extends Fragment {
         TextView carPlateTv = view.findViewById(R.id.car_plate_tv);
         TextView descriptionTv = view.findViewById(R.id.description_tv);
         TextView garageTv = view.findViewById(R.id.garage_tv);
-        TextView servicesCountTv = view.findViewById(R.id.services_count_tv);
-        TextView productsCountTv = view.findViewById(R.id.products_count_tv);
+
+        RecyclerView servicesRecyclerView = view.findViewById(R.id.selected_services_recycler_view);
+        servicesRecyclerView.setAdapter(new SelectedItemsAdapter(message.getServicesList(), "services"));
+
+        RecyclerView productsRecyclerView = view.findViewById(R.id.selected_products_recycler_view);
+        productsRecyclerView.setAdapter(new SelectedItemsAdapter(message.getProductsList(), "products"));
 
 
         assert message != null;
@@ -63,8 +68,6 @@ public class ReviewFragment extends Fragment {
             garageTv.setText(getResources().getString(R.string.no_garage));
         else
             garageTv.setText(message.getGarage());
-        servicesCountTv.setText(String.format("%d", message.getServicesList().size()));
-        productsCountTv.setText(String.format("%d", message.getProductsList().size()));
 
         Button sendRequestBtn = view.findViewById(R.id.send_request_btn);
         sendRequestBtn.setOnClickListener(v -> sendMessage());
@@ -77,6 +80,7 @@ public class ReviewFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         mViewModel = new ViewModelProvider(this).get(ReviewViewModel.class);
 
         mViewModel.getSuccessMessage().observe(getViewLifecycleOwner(), successMessage -> Toast.makeText(getContext(), successMessage, Toast.LENGTH_SHORT).show());

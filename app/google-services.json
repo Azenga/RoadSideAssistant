@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "450351702428",
-    "firebase_url": "https://roadsideassistant-22827.firebaseio.com",
-    "project_id": "roadsideassistant-22827",
-    "storage_bucket": "roadsideassistant-22827.appspot.com"
+    "project_number": "145231569327",
+    "firebase_url": "https://roadsideassistant.firebaseio.com",
+    "project_id": "roadsideassistant",
+    "storage_bucket": "roadsideassistant.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:450351702428:android:319f6003713779ec902859",
+        "mobilesdk_app_id": "1:145231569327:android:f6432946f584216c9b4f5a",
         "android_client_info": {
           "package_name": "com.project.roadsideassistant"
         }
       },
       "oauth_client": [
         {
-          "client_id": "450351702428-c7vsjsc0th00ojthmr20m73grm3ucpvp.apps.googleusercontent.com",
+          "client_id": "145231569327-nimj2tktf9dap0ds2vatedrr201vqert.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.project.roadsideassistant",
-            "certificate_hash": "8813360e3b9fc520c0d3c5a588fcc2a79c1ca5fd"
+            "certificate_hash": "eb6d996bf11ea94aa2f2deb8a6d104371c14d33f"
           }
         },
         {
-          "client_id": "450351702428-s4h8h57thp9plgqkbvo1q4jkggaeuf0j.apps.googleusercontent.com",
+          "client_id": "145231569327-hs5rumb4k6mvi7tiseuuenl9c415sj89.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDACyaKVaPLqQ-EEJsw7e9e6SSEirb0Hus"
+          "current_key": "AIzaSyBsAoZ5tKsqGWFGnysS88Vwl5HXASACH2w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "450351702428-s4h8h57thp9plgqkbvo1q4jkggaeuf0j.apps.googleusercontent.com",
+              "client_id": "145231569327-hs5rumb4k6mvi7tiseuuenl9c415sj89.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
