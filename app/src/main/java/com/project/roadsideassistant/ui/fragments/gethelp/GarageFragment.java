@@ -23,12 +23,19 @@ public class GarageFragment extends Fragment {
 
 
     private AutoCompleteTextView garagesAtv;
+    private Message message;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_garage, container, false);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        message = GarageFragmentArgs.fromBundle(requireArguments()).getMessage();
     }
 
     @Override
@@ -42,23 +49,28 @@ public class GarageFragment extends Fragment {
         garagesAtv = view.findViewById(R.id.garages_atv);
         garagesAtv.setAdapter(adapter);
 
-        garagesAtv.setOnItemClickListener((parent, view1, position, id) -> {
-            closeKeyboard();
-        });
+        garagesAtv.setOnItemClickListener((parent, view1, position, id) -> closeKeyboard());
         //Register the rest of the views
         Button skipButton = view.findViewById(R.id.skip_button);
         Button nextButton = view.findViewById(R.id.next_button);
 
-        assert getArguments() != null;
-        Message message = GarageFragmentArgs.fromBundle(getArguments()).getMessage();
+        skipButton.setOnClickListener(v -> {
 
-        skipButton.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_garageFragment_to_reviewFragment));
+            GarageFragmentDirections.ActionGarageFragmentToReviewFragment action = GarageFragmentDirections.actionGarageFragmentToReviewFragment();
+
+            action.setMessage(message);
+
+            Navigation.findNavController(v).navigate(action);
+
+        });
 
         nextButton.setOnClickListener(v -> {
             String garage = String.valueOf(garagesAtv.getText());
 
             assert message != null;
+
             message.setGarage(garage);
+
             if (TextUtils.isEmpty(garage)) {
                 garagesAtv.setError("Select which garage you want");
                 garagesAtv.requestFocus();

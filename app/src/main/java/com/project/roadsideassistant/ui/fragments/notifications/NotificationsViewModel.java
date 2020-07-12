@@ -13,9 +13,10 @@ public class NotificationsViewModel extends ViewModel implements NotificationRep
 
     private MutableLiveData<List<Notification>> _notifications = new MutableLiveData<>();
     private MutableLiveData<Exception> _e = new MutableLiveData<>();
+    private NotificationRepository notificationRepository;
 
     public NotificationsViewModel(String userId) {
-        NotificationRepository notificationRepository = new NotificationRepository(this);
+        notificationRepository = new NotificationRepository(this);
 
         notificationRepository.getByUserId(userId);
     }
@@ -36,5 +37,12 @@ public class NotificationsViewModel extends ViewModel implements NotificationRep
 
     public LiveData<Exception> getE() {
         return _e;
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        notificationRepository.deregisterListener();
+
     }
 }

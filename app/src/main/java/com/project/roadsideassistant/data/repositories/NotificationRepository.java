@@ -18,13 +18,19 @@ public class NotificationRepository {
         mDb.collection("users").document(userId).collection("notifications")
                 .addSnapshotListener((queryDocumentSnapshots, e) -> {
                     if (e != null) {
-                        listener.onError(e);
+
+                        if (listener != null) listener.onError(e);
                     }
 
                     assert queryDocumentSnapshots != null;
 
-                    listener.onGetAll(queryDocumentSnapshots.toObjects(Notification.class));
+                    if (listener != null)
+                        listener.onGetAll(queryDocumentSnapshots.toObjects(Notification.class));
                 });
+    }
+
+    public void deregisterListener() {
+        listener = null;
     }
 
 
