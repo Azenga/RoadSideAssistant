@@ -10,8 +10,8 @@ public class Notification implements Serializable {
     private String id;
 
     private String title;
-    private String content;
-    private boolean isRead;
+    private String body;
+    private String cost;
 
     public Notification() {
     }
@@ -28,19 +28,19 @@ public class Notification implements Serializable {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getBody() {
+        return body;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setBody(String body) {
+        this.body = body;
     }
 
-    public boolean isRead() {
-        return isRead;
+    public String getCost() {
+        return cost;
     }
 
-    public void setRead(boolean read) {
-        isRead = read;
+    public void setCost(String cost) {
+        this.cost = cost;
     }
 }

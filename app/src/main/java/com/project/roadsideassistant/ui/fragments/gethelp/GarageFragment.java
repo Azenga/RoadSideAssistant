@@ -1,10 +1,12 @@
 package com.project.roadsideassistant.ui.fragments.gethelp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -20,8 +22,7 @@ import com.project.roadsideassistant.data.models.Message;
 public class GarageFragment extends Fragment {
 
 
-    public GarageFragment() {
-    }
+    private AutoCompleteTextView garagesAtv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,9 +39,12 @@ public class GarageFragment extends Fragment {
 
         String[] garages = getActivity().getResources().getStringArray(R.array.garages);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.dropdown_menu_popup_item, garages);
-        AutoCompleteTextView garagesAtv = view.findViewById(R.id.garages_atv);
+        garagesAtv = view.findViewById(R.id.garages_atv);
         garagesAtv.setAdapter(adapter);
 
+        garagesAtv.setOnItemClickListener((parent, view1, position, id) -> {
+            closeKeyboard();
+        });
         //Register the rest of the views
         Button skipButton = view.findViewById(R.id.skip_button);
         Button nextButton = view.findViewById(R.id.next_button);
@@ -68,4 +72,12 @@ public class GarageFragment extends Fragment {
         });
 
     }
+
+    private void closeKeyboard() {
+        InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if (imm != null)
+            imm.hideSoftInputFromWindow(garagesAtv.getApplicationWindowToken(), InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
 }

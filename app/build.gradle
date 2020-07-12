@@ -59,8 +59,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     //Places API
-    implementation 'com.google.android.libraries.places:places:2.2.0'
+    implementation 'com.google.android.libraries.places:places:2.3.0'
 
     //Material Search Bar
     implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
+
+    //Permissions Helper library
+    implementation 'com.karumi:dexter:6.2.1'
 }

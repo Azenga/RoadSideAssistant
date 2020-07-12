@@ -10,6 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/location_name_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/location_name_atv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_location_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/next_button"
         android:layout_width="match_parent"
@@ -17,5 +32,6 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:text="@string/next_text" />
+
 
 </RelativeLayout>
